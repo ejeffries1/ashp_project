@@ -1,10 +1,19 @@
 class Scraper
+  attr_reader :url
   
-  def current_drugs
-    @doc = NOKOGIRI::HTML(open("https://www.ashp.org/Drug-Shortages/Current-Shortages/Drug-Shortages-List?page=CurrentShortages"))
-    @doc.css(".main main-container").each do |drugs|
-      drugs.css(".drug-shortage-container")
+  def initialize(url)
+   @url = url
     end
     binding.pry
   end
+  
+  def drug
+     html =  @doc = NOKOGIRI::HTML(open(url))
+     
+     @doc.css(".main main-container").each do |drugs|
+      drugs.css(".drug-shortage-container")
+    end
+  end
 end
+
+drugs = Scraper.new("https://www.ashp.org/Drug-Shortages/Current-Shortages/Drug-Shortages-List?page=CurrentShortages")
