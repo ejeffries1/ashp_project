@@ -11,7 +11,7 @@ class Scraper
      html =  @doc = NOKOGIRI::HTML(open(url))
      
      @doc.css(".main main-container").each do |drugs|
-      drugs.css(".drug-shortage-container")
+      drug = drugs.css(".odd")
     end
   end
 end
