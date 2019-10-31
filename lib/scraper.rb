@@ -1,3 +1,5 @@
+require "noko"
+
 class Scraper
   attr_reader :url
   
